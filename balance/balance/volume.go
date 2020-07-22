@@ -3,14 +3,28 @@ package balance
 import "fmt"
 
 type Volume struct {
-	host string
-	port int
+	host   string
+	port   int
+	weight int
 }
 
-func NewVolume(host string, port int) *Volume {
+type Volumes []*Volume
+
+func (volumes Volumes) getMaxWeight() int {
+	max := 0
+	for _, v := range volumes {
+		if max < v.weight {
+			max = v.weight
+		}
+	}
+	return max
+}
+
+func NewVolume(host string, port int, weight int) *Volume {
 	return &Volume{
-		host: host,
-		port: port,
+		host:   host,
+		port:   port,
+		weight: weight,
 	}
 }
 

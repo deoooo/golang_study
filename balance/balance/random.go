@@ -12,7 +12,7 @@ func init() {
 type Random struct {
 }
 
-func (r Random) Select(volumes []*Volume) (v *Volume, err error) {
+func (r Random) Select(volumes Volumes) (v *Volume, err error) {
 	lens := len(volumes)
 	if lens == 0 {
 		err = errors.New("No Volume")
